@@ -56,7 +56,7 @@ export async function Footer() {
 				</div>
 
 				<div className="flex flex-col justify-between border-t border-neutral-200 py-10 sm:flex-row">
-					<p className="text-sm text-neutral-500">Copyright &copy; {currentYear} Your Store, Inc.</p>
+					<p className="text-sm text-neutral-500">Copyright &copy; {currentYear} CYCLE LINE LIMITED, Inc.</p>
 					<p className="text-sm text-neutral-500">Powered by Saleor</p>
 				</div>
 			</div>

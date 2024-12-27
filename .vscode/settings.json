@@ -16,5 +16,8 @@
 	},
 	"files.associations": {
 		"*.css": "tailwindcss"
+	},
+	"[dotenv]": {
+		"editor.defaultFormatter": "foxundermoon.shell-format"
 	}
 }
