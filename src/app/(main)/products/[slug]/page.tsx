@@ -148,8 +148,10 @@ export default async function Page(props: { params: { slug: string }; searchPara
 						availability: selectedVariant.quantityAvailable
 							? "https://schema.org/InStock"
 							: "https://schema.org/OutOfStock",
-						priceCurrency: selectedVariant.pricing?.price?.gross.currency,
-						price: selectedVariant.pricing?.price?.gross.amount,
+						...(selectedVariant.pricing?.price?.gross?.currency && {
+							priceCurrency: selectedVariant.pricing.price.gross.currency,
+							price: selectedVariant.pricing.price.gross.amount,
+						}),
 					},
 			  }
 			: {
@@ -161,9 +163,11 @@ export default async function Page(props: { params: { slug: string }; searchPara
 						availability: product.variants?.some((variant) => variant.quantityAvailable)
 							? "https://schema.org/InStock"
 							: "https://schema.org/OutOfStock",
-						priceCurrency: product.pricing?.priceRange?.start?.gross.currency,
-						lowPrice: product.pricing?.priceRange?.start?.gross.amount,
-						highPrice: product.pricing?.priceRange?.stop?.gross.amount,
+						...(product.pricing?.priceRange?.start?.gross?.currency && {
+							priceCurrency: product.pricing.priceRange.start.gross.currency,
+							lowPrice: product.pricing.priceRange.start.gross.amount,
+							highPrice: product.pricing.priceRange.stop?.gross?.amount,
+						}),
 					},
 			  }),
 	};

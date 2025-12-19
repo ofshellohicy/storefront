@@ -15,7 +15,20 @@ export default async function Page() {
 		revalidate: 60,
 	});
 
-	if (!data.collection?.products) throw Error("No products found");
+	// Gracefully handle empty data
+	if (!data.collection?.products?.edges?.length) {
+		return (
+			<div>
+				<section className="mx-auto max-w-7xl p-8 pb-16">
+					<h2 className="sr-only">Product list</h2>
+					<div className="py-16 text-center">
+						<p className="text-lg text-gray-500">No products found</p>
+						<p className="mt-2 text-sm text-gray-400">Please check back later</p>
+					</div>
+				</section>
+			</div>
+		);
+	}
 
 	const products = data.collection?.products.edges.map(({ node: product }) => product);
 
